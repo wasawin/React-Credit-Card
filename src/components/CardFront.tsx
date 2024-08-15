@@ -20,14 +20,14 @@ function CardFront() {
           <span className=" text-xl">3455 4562 7710 3507</span>
           <div className="flex  items-start justify-start gap-6 w-full  text-sm">
             <span className="uppercase ">john doe</span>
-            <span className="flex  items-center text-center gap-1">
-              <div className="text-[0.5rem] leading-none">
+            <div className="flex  items-center text-center gap-1">
+              <span className="text-[0.5rem] leading-none">
                 VALID
                 <br />
                 THRU
-              </div>
+              </span>
               <p className="">10/24</p>
-            </span>
+            </div>
           </div>
         </div>
       </div>
