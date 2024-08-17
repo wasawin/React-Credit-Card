@@ -6,7 +6,7 @@ function CardFront() {
   return (
     <>
       <div
-        className="min-w-56 max-w-80 h-52 w-full backdrop-blur-xl  bg-white/35 rounded-xl m-1  
+        className="min-w-56 max-w-80 h-52 w-full   bg-white/35 rounded-xl m-1  
       p-4 flex flex-col justify-center items-stretch  gap-3 shadow-2xl shadow-black/50"
       >
         <div className="flex justify-between items-center text-slate-700">
