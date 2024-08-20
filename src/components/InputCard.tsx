@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 interface InputCardProps {
   type: 'text' | 'tel' | 'date' | 'email' | 'number' | 'date' | 'month';
   placholder: string;
@@ -13,6 +13,7 @@ interface InputCardProps {
   pattern?: '[0-9]*' | '[a-zA-Z]*' | '[a-zA-Z0-9]*';
   minLength?: number;
   maxLength?: number;
+  formatnumber?: boolean;
 }
 
 const InputCard: React.FC<InputCardProps> = ({
@@ -22,7 +23,16 @@ const InputCard: React.FC<InputCardProps> = ({
   pattern,
   minLength,
   maxLength,
+  formatnumber,
 }) => {
+  const [cardNumber, setCardNumber] = useState('');
+
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const input = e.target.value.replace(/\D/g, '');
+    const formatted = input.replace(/(\d{4})/g, '$1 ').trim();
+    setCardNumber(formatted);
+  };
+
   return (
     <label
       htmlFor={`User${placholder}`}
@@ -34,6 +44,8 @@ const InputCard: React.FC<InputCardProps> = ({
         placeholder={placholder}
         inputMode={inputMode}
         pattern={pattern}
+        value={formatnumber ? cardNumber : undefined}
+        onChange={formatnumber ? handleChange : undefined}
         minLength={minLength}
         maxLength={maxLength}
         className="peer h-8 w-full border-none bg-transparent p-0 placeholder-transparent focus:border-transparent focus:outline-none focus:ring-0 sm:text-sm"

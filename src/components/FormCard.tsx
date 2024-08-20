@@ -8,12 +8,13 @@ function FormCard() {
         <h1>Detail for Card</h1>
         <section className="flex flex-col justify-center items-center gap-4 p-3 ">
           <InputCard
-            type="text"
+            type="tel"
             placholder="Card number"
             inputMode="numeric"
             minLength={16}
             maxLength={16}
             pattern="[0-9]*"
+            formatnumber
           />
           <InputCard type="text" placholder="Card holder" pattern="[a-zA-Z]*" />
           <div className="flex gap-4">
