@@ -11,8 +11,8 @@ function FormCard() {
             type="tel"
             placholder="Card number"
             inputMode="numeric"
-            minLength={16}
-            maxLength={16}
+            minLength={19}
+            maxLength={19}
             pattern="[0-9]*"
             formatnumber
           />
