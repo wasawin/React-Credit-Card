@@ -1,4 +1,5 @@
-import React, { useState } from 'react';
+import React from 'react';
+
 interface InputCardProps {
   type: 'text' | 'tel' | 'date' | 'email' | 'number' | 'date' | 'month';
   placholder: string;
@@ -13,7 +14,9 @@ interface InputCardProps {
   pattern?: '[0-9]*' | '[a-zA-Z]*' | '[a-zA-Z0-9]*';
   minLength?: number;
   maxLength?: number;
-  formatnumber?: boolean;
+  value: string;
+  onChange?: (e: React.ChangeEvent<HTMLInputElement>) => void;
+  onFocus?: (e: React.FocusEvent<HTMLLabelElement>) => void;
 }
 
 const InputCard: React.FC<InputCardProps> = ({
@@ -23,20 +26,15 @@ const InputCard: React.FC<InputCardProps> = ({
   pattern,
   minLength,
   maxLength,
-  formatnumber,
+  value,
+  onChange,
+  onFocus,
 }) => {
-  const [cardNumber, setCardNumber] = useState('');
-
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const input = e.target.value.replace(/\D/g, '');
-    const formatted = input.replace(/(\d{4})/g, '$1 ').trim();
-    setCardNumber(formatted);
-  };
-
   return (
     <label
       htmlFor={`User${placholder}`}
       className="relative block w-full overflow-hidden rounded-md border border-gray-200 px-3 pt-3 shadow-sm focus-within:border-blue-600 focus-within:ring-1 focus-within:ring-blue-600"
+      onFocus={onFocus}
     >
       <input
         type={type}
@@ -44,11 +42,11 @@ const InputCard: React.FC<InputCardProps> = ({
         placeholder={placholder}
         inputMode={inputMode}
         pattern={pattern}
-        value={formatnumber ? cardNumber : undefined}
-        onChange={formatnumber ? handleChange : undefined}
+        value={value}
+        onChange={onChange}
         minLength={minLength}
         maxLength={maxLength}
-        className="peer h-8 w-full border-none bg-transparent p-0 placeholder-transparent focus:border-transparent focus:outline-none focus:ring-0 sm:text-sm"
+        className="peer h-8 w-full border-none bg-transparent p-0 placeholder-transparent focus:border-transparent focus:outline-none focus:ring-0 sm:text-sm uppercase"
       />
 
       <span className="absolute start-3 top-3 -translate-y-1/2 text-xs text-gray-700 transition-all peer-placeholder-shown:top-1/2 peer-placeholder-shown:text-sm peer-focus:top-3 peer-focus:text-xs">

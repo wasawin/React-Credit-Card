@@ -1,7 +1,41 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import InputCard from './InputCard';
+import { CardContext } from '../context/CardContext.tsx';
+function FormCard({ onFlipCard: onFlipCard }: { onFlipCard: () => void }) {
+  const {
+    cardNumber,
+    setCardNumber,
+    cardHolder,
+    setCardHolder,
+    expiryMonth,
+    setExpiryMonth,
+    expiryYear,
+    setExpiryYear,
+    cvc,
+    setCvc,
+  } = useContext(CardContext);
 
-function FormCard() {
+  const handleChangeCardnumber = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const input = e.target.value.replace(/\D/g, '');
+    const formatted = input.replace(/(\d{4})/g, '$1 ').trim();
+    setCardNumber(formatted);
+  };
+  const handleChangeCardholder = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setCardHolder(e.target.value);
+  };
+  const handleChangeExpiryMonth = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setExpiryMonth(e.target.value);
+  };
+  const handleChangeExpiryYear = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setExpiryYear(e.target.value);
+  };
+  const handleChangeCvc = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setCvc(e.target.value);
+  };
+  const handleFocusCvc = () => {
+    onFlipCard();
+  };
+
   return (
     <>
       <div className="bg-white  h-96 w-full">
@@ -14,9 +48,18 @@ function FormCard() {
             minLength={19}
             maxLength={19}
             pattern="[0-9]*"
-            formatnumber
+            value={cardNumber}
+            onChange={handleChangeCardnumber}
           />
-          <InputCard type="text" placholder="Card holder" pattern="[a-zA-Z]*" />
+          <InputCard
+            type="text"
+            placholder="Card holder"
+            pattern="[a-zA-Z]*"
+            minLength={0}
+            maxLength={20}
+            value={cardHolder}
+            onChange={handleChangeCardholder}
+          />
           <div className="flex gap-4">
             <InputCard
               type="text"
@@ -25,6 +68,8 @@ function FormCard() {
               minLength={2}
               maxLength={2}
               pattern="[0-9]*"
+              value={expiryMonth}
+              onChange={handleChangeExpiryMonth}
             />
             <InputCard
               type="text"
@@ -33,6 +78,8 @@ function FormCard() {
               minLength={2}
               maxLength={2}
               pattern="[0-9]*"
+              value={expiryYear}
+              onChange={handleChangeExpiryYear}
             />
           </div>
           <InputCard
@@ -42,6 +89,9 @@ function FormCard() {
             minLength={3}
             maxLength={3}
             pattern="[0-9]*"
+            value={cvc}
+            onChange={handleChangeCvc}
+            onFocus={handleFocusCvc}
           />
         </section>
       </div>
