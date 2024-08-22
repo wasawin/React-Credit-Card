@@ -1,4 +1,4 @@
-import React, { useContext } from 'react';
+import { useContext } from 'react';
 import { FcSimCardChip } from 'react-icons/fc';
 import { LuNfc } from 'react-icons/lu';
 import { SiVisa } from 'react-icons/si';

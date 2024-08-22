@@ -6,12 +6,10 @@ import { CardContext } from './context/CardContext';
 
 function App() {
   const { isFrontVisible } = useContext(CardContext);
-  const imageurl =
-    'https://images.unsplash.com/photo-1666693038485-b3a060067809?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D';
   return (
     <>
       <main
-        className={`flex justify-center items-center max-lg:flex-col min-h-screen w-full p-2 md:p-24 bg-gradient-to-r from-pink-500 to-rose-500 bg-[url(${imageurl})] bg-cover bg-center bg-no-repeat`}
+        className={`flex justify-center items-center max-lg:flex-col min-h-screen w-full p-2 md:p-24 bg-hero bg-cover bg-center bg-no-repeat`}
       >
         <div className="p-4 rounded-xl w-full md:w-96 h-96 group [perspective:1000px] overflow-hidden">
           <article
