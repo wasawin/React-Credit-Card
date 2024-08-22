@@ -17,7 +17,7 @@ interface InputCardProps {
   maxLength?: number;
   value: string;
   onChange?: (e: React.ChangeEvent<HTMLInputElement>) => void;
-  onclick?: 'Front' | 'Back';
+  onclick?: boolean;
 }
 
 const InputCard: React.FC<InputCardProps> = ({

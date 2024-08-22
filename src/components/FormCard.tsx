@@ -35,9 +35,9 @@ function FormCard() {
 
   return (
     <>
-      <div className="bg-white  h-96 w-full">
-        <h1>Detail for Card</h1>
-        <section className="flex flex-col justify-center items-center gap-4 p-3 ">
+      <div className="bg-white   w-full rounded-lg p-4 h-max">
+        <h1 className="px-4">Detail for Card</h1>
+        <section className="flex flex-col justify-center items-center gap-4 p-4 ">
           <InputCard
             type="tel"
             placholder="Card number"
@@ -57,7 +57,7 @@ function FormCard() {
             value={cardHolder}
             onChange={handleChangeCardholder}
           />
-          <div className="flex gap-4">
+          <div className="flex justify-center items-center gap-2">
             <InputCard
               type="text"
               inputMode="numeric"
@@ -68,6 +68,7 @@ function FormCard() {
               value={expiryMonth}
               onChange={handleChangeExpiryMonth}
             />
+            /
             <InputCard
               type="text"
               inputMode="numeric"
@@ -79,17 +80,19 @@ function FormCard() {
               onChange={handleChangeExpiryYear}
             />
           </div>
-          <InputCard
-            type="text"
-            inputMode="numeric"
-            placholder="CVC"
-            minLength={3}
-            maxLength={3}
-            pattern="[0-9]*"
-            value={cvc}
-            onChange={handleChangeCvc}
-            onclick={'Back'}
-          />
+          <div className="w-1/3 me-auto">
+            <InputCard
+              type="text"
+              inputMode="numeric"
+              placholder="CVC"
+              minLength={3}
+              maxLength={3}
+              pattern="[0-9]*"
+              value={cvc}
+              onChange={handleChangeCvc}
+              onclick
+            />
+          </div>
         </section>
       </div>
     </>

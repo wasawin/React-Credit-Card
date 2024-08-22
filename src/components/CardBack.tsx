@@ -13,15 +13,15 @@ function CardBack() {
           </div>
           <span className="text-sm font-bold">CVC</span>
         </div>
-        <p className="text-xs text-gray-600">
+        <p className="text-xs text-gray-600 text-pretty">
           This card is property of Visa. Authorized signature required. Not
           valid unless signed.
         </p>
       </div>
-      <div className="flex justify-between items-center p-4">
-        <BsShieldLockFill className="text-gray-500" />
-        <span className="text-xs text-gray-500">
-          For customer service, call 1-800-123-4567
+      <div className="flex justify-between items-center p-4 gap-2 ">
+        <BsShieldLockFill className="text-gray-500 " />
+        <span className="text-xs text-gray-500 text-balance">
+          For customer service call 1-800-123-4567
         </span>
       </div>
     </div>
