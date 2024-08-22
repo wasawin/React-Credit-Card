@@ -14,6 +14,9 @@ interface CardContextProps {
   setExpiryYear: React.Dispatch<React.SetStateAction<string>>;
   cvc: string;
   setCvc: React.Dispatch<React.SetStateAction<string>>;
+  isFrontVisible: boolean;
+  setIsFrontVisible: React.Dispatch<React.SetStateAction<boolean>>;
+  handleFlipCard: () => void;
 }
 const CardContext = createContext<CardContextProps>({
   cardNumber: '',
@@ -26,6 +29,9 @@ const CardContext = createContext<CardContextProps>({
   setExpiryYear: () => {},
   cvc: '',
   setCvc: () => {},
+  isFrontVisible: true,
+  setIsFrontVisible: () => {},
+  handleFlipCard: () => {},
 });
 
 const CardProvider: React.FC<CardProviderProps> = ({ children }) => {
@@ -34,6 +40,12 @@ const CardProvider: React.FC<CardProviderProps> = ({ children }) => {
   const [expiryMonth, setExpiryMonth] = useState('');
   const [expiryYear, setExpiryYear] = useState('');
   const [cvc, setCvc] = useState('');
+  const [isFrontVisible, setIsFrontVisible] = useState(true);
+
+  const handleFlipCard = () => {
+    setIsFrontVisible((prevState) => !prevState);
+  };
+
   return (
     <CardContext.Provider
       value={{
@@ -47,6 +59,9 @@ const CardProvider: React.FC<CardProviderProps> = ({ children }) => {
         setExpiryYear,
         cvc,
         setCvc,
+        isFrontVisible,
+        setIsFrontVisible,
+        handleFlipCard,
       }}
     >
       {children}

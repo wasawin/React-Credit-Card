@@ -1,4 +1,5 @@
-import React from 'react';
+import React, { useContext } from 'react';
+import { CardContext } from '../context/CardContext';
 
 interface InputCardProps {
   type: 'text' | 'tel' | 'date' | 'email' | 'number' | 'date' | 'month';
@@ -16,7 +17,7 @@ interface InputCardProps {
   maxLength?: number;
   value: string;
   onChange?: (e: React.ChangeEvent<HTMLInputElement>) => void;
-  onFocus?: (e: React.FocusEvent<HTMLLabelElement>) => void;
+  onclick?: 'Front' | 'Back';
 }
 
 const InputCard: React.FC<InputCardProps> = ({
@@ -28,13 +29,15 @@ const InputCard: React.FC<InputCardProps> = ({
   maxLength,
   value,
   onChange,
-  onFocus,
+  onclick,
 }) => {
+  const { handleFlipCard } = useContext(CardContext);
+
   return (
     <label
       htmlFor={`User${placholder}`}
       className="relative block w-full overflow-hidden rounded-md border border-gray-200 px-3 pt-3 shadow-sm focus-within:border-blue-600 focus-within:ring-1 focus-within:ring-blue-600"
-      onFocus={onFocus}
+      onFocus={onclick ? handleFlipCard : undefined}
     >
       <input
         type={type}
@@ -44,6 +47,7 @@ const InputCard: React.FC<InputCardProps> = ({
         pattern={pattern}
         value={value}
         onChange={onChange}
+        onBlurCapture={onclick ? handleFlipCard : undefined}
         minLength={minLength}
         maxLength={maxLength}
         className="peer h-8 w-full border-none bg-transparent p-0 placeholder-transparent focus:border-transparent focus:outline-none focus:ring-0 sm:text-sm uppercase"

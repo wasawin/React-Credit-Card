@@ -11,7 +11,7 @@ function CardBack() {
           <div className="bg-white w-3/4 h-8 flex justify-end items-center px-1">
             <p className="">{cvc}</p>
           </div>
-          <span className="text-sm font-bold">CVV</span>
+          <span className="text-sm font-bold">CVC</span>
         </div>
         <p className="text-xs text-gray-600">
           This card is property of Visa. Authorized signature required. Not

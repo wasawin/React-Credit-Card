@@ -1,7 +1,7 @@
 import React, { useContext } from 'react';
 import InputCard from './InputCard';
 import { CardContext } from '../context/CardContext.tsx';
-function FormCard({ onFlipCard: onFlipCard }: { onFlipCard: () => void }) {
+function FormCard() {
   const {
     cardNumber,
     setCardNumber,
@@ -31,9 +31,6 @@ function FormCard({ onFlipCard: onFlipCard }: { onFlipCard: () => void }) {
   };
   const handleChangeCvc = (e: React.ChangeEvent<HTMLInputElement>) => {
     setCvc(e.target.value);
-  };
-  const handleFocusCvc = () => {
-    onFlipCard();
   };
 
   return (
@@ -91,7 +88,7 @@ function FormCard({ onFlipCard: onFlipCard }: { onFlipCard: () => void }) {
             pattern="[0-9]*"
             value={cvc}
             onChange={handleChangeCvc}
-            onFocus={handleFocusCvc}
+            onclick={'Back'}
           />
         </section>
       </div>
