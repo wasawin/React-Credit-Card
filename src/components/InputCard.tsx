@@ -1,6 +1,5 @@
 import React, { useContext } from 'react';
 import { CardContext } from '../context/CardContext';
-
 interface InputCardProps {
   type: 'text' | 'tel' | 'date' | 'email' | 'number' | 'date' | 'month';
   placholder: string;
